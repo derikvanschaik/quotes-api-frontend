@@ -20,6 +20,14 @@ function AuthorComponent({author, authorsToQuotes}){
           }
         });
     }
+    // whenever the author props is changed, we want to set the default tab to quotes
+    useEffect(
+        () =>{
+            setKey('quotes');
+            setImgSrc(null);
+        }
+    ,[author]);
+
     const [key, setKey] = useState('quotes');
 
     const handleSelect = (key) =>{
