@@ -1,9 +1,10 @@
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import Stack from 'react-bootstrap/Stack';
 import {useEffect, useState} from 'react';
+import { Link } from "react-router-dom";
 import AuthorsAccordion from './components/AuthorsAccordion';
 import AuthorsPagination from './components/AuthorsPagination';
+import NavComponent from './components/NavComponent';
 
 function App() {
   const [authors, setAuthors] = useState([]);
@@ -32,25 +33,21 @@ function App() {
   }
 
   return (
-    <Container>
-      <div>
-        <Row className='text-center'>
-          <h1>Authors</h1>
-          <AuthorsPagination 
-            authors={authors} 
-            active={activePage} 
-            authorsPerPage={authorsPerPage}
-            handleClick={handlePageChange}
-          />
-        </Row>
-        <Row>
-          <Col>
+    <>
+      <NavComponent includeSearch={true}/>
+      <Container>
+          <Stack gap={4} className='text-center'>
+            <h1>Authors</h1>
+            <AuthorsPagination 
+              authors={authors} 
+              active={activePage} 
+              authorsPerPage={authorsPerPage}
+              handleClick={handlePageChange}
+            />
             <AuthorsAccordion authors={displayedAuthors} authorsToQuotes={authorsToQuotes}/>
-          </Col>
-        </Row>
-
-      </div>
-    </Container>
+          </Stack>
+      </Container>
+    </>
   );
 }
 

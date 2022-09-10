@@ -4,23 +4,31 @@ import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Stack from 'react-bootstrap/Stack';
-import {useState, useRef} from 'react';
+import Spinner from 'react-bootstrap/Spinner';
+import {useState} from 'react';
 import AuthorsAccordion from './AuthorsAccordion';
+import NavComponent from './NavComponent';
+import { Link } from "react-router-dom";
 
 function AuthorSearch() {
     const [authors, setAuthors] = useState([]);
     const [authorsToQuotes, setAuthorsToQuotes] = useState({});
     const [searchInput, setSearchInput] = useState('');
     const [displayError, setDisplayError] = useState(false);
+    const [justSearched, setJustSearched] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleInput = (value) =>{
         setDisplayError(false);
         setSearchInput(value);
+        setJustSearched(false);
     }
     const handleSearch = () =>{
         if(searchInput === ''){
             setDisplayError(true);
+            return;
         }
+        setIsLoading(true);
         fetch(`https://enhanced-type-fit.herokuapp.com/search/${searchInput}`, {mode: 'cors'})
         .then(resp => resp.json())
         .then((data) => {
@@ -32,9 +40,13 @@ function AuthorSearch() {
             }
             setAuthorsToQuotes(authorsToQuotes);
             setAuthors(authors);
+            setJustSearched(true);
+            setIsLoading(false);
         });
     }
     return (
+      <>
+      <NavComponent includeHome={true}/>
       <Container>
           <h1 className='text-center'>Author Search</h1>
           <Stack gap={5}>
@@ -58,9 +70,15 @@ function AuthorSearch() {
                 </Form>
             </Row>
             <Row>
+                {isLoading &&
+                    <Spinner animation="border" role="status" className="text-center">
+                        <span className="visually-hidden">Loading...</span>
+                    </Spinner>
+                }
                 {authors.length > 0 && <AuthorsAccordion authors={authors} authorsToQuotes={authorsToQuotes}/>}
                 {
                     authors.length == 0 &&
+                    justSearched === true &&
                     <Alert variant="secondary">
                         <Alert.Heading><h3>Not Found :(</h3></Alert.Heading>
                         <p>
@@ -83,6 +101,7 @@ function AuthorSearch() {
             </Row>
           </Stack>
       </Container>
+      </>
     );
   }
   
