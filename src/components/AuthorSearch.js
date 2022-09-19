@@ -8,6 +8,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import {useState} from 'react';
 import AuthorsAccordion from './AuthorsAccordion';
 import NavComponent from './NavComponent';
+import SearchType from './SearchType';
 import APP from '../enums/enum'
 
 function AuthorSearch() {
@@ -48,7 +49,7 @@ function AuthorSearch() {
       <>
       <NavComponent includeHome={true}/>
       <Container>
-          <h1 className='text-center'>Author Search</h1>
+          <SearchType />
           <Stack gap={5}>
             <Row className='text-center'>
                 <Form>

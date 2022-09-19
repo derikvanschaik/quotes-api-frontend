@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import Stack from 'react-bootstrap/Stack';
 import {useState} from 'react';
 import NavComponent from './NavComponent';
+import SearchType from './SearchType';
 import Badge from 'react-bootstrap/Badge';
 import APP from '../enums/enum'
 
@@ -37,7 +38,7 @@ function AuthorSearch() {
       <>
       <NavComponent includeHome={true}/>
       <Container>
-          <h1 className='text-center'>Keyword Search</h1>
+          <SearchType />
           <Stack gap={5}>
             <Row className='text-center'>
                 <Form>
