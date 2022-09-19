@@ -8,7 +8,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import {useState} from 'react';
 import AuthorsAccordion from './AuthorsAccordion';
 import NavComponent from './NavComponent';
-import { Link } from "react-router-dom";
+import APP from '../enums/enum'
 
 function AuthorSearch() {
     const [authors, setAuthors] = useState([]);
@@ -29,7 +29,7 @@ function AuthorSearch() {
             return;
         }
         setIsLoading(true);
-        fetch(`https://enhanced-type-fit.herokuapp.com/search/${searchInput}`, {mode: 'cors'})
+        fetch(`${APP.BASE_URL}/search/${searchInput}`, {mode: 'cors'})
         .then(resp => resp.json())
         .then((data) => {
             const authors = [];

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import AuthorsAccordion from './components/AuthorsAccordion';
 import AuthorsPagination from './components/AuthorsPagination';
 import NavComponent from './components/NavComponent';
+import APP from './enums/enum';
 
 function App() {
   const [authors, setAuthors] = useState([]);
@@ -14,7 +15,7 @@ function App() {
   const authorsPerPage = 50;
   
   useEffect( () =>{
-    fetch("https://enhanced-type-fit.herokuapp.com/", {mode: 'cors'})
+    fetch(APP.BASE_URL + '/', {mode: 'cors'})
     .then(resp => resp.json())
     .then((data) => {
       setAuthorsToQuotes(data);

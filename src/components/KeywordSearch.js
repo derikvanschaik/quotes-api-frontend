@@ -7,6 +7,7 @@ import Stack from 'react-bootstrap/Stack';
 import {useState} from 'react';
 import NavComponent from './NavComponent';
 import Badge from 'react-bootstrap/Badge';
+import APP from '../enums/enum'
 
 function AuthorSearch() {
     const [keywords, setKeywords] = useState([]);
@@ -25,7 +26,7 @@ function AuthorSearch() {
             setQuotes([])
             return
         }
-        fetch(`https://enhanced-type-fit.herokuapp.com/keyword-search/${keywords.join('-')}`, {mode: 'cors'})
+        fetch(`${APP.BASE_URL}/keyword-search/${keywords.join('-')}`, {mode: 'cors'})
         .then(resp => resp.json())
         .then((data) => {
             setResultsCount([...Object.keys(data)].length)
