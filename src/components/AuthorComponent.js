@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import Spinner from 'react-bootstrap/Spinner';
+import APP from '../enums/enum'
 
 function AuthorComponent({author, authorsToQuotes}){
     const [imgSrc, setImgSrc] = useState(null);
@@ -9,7 +10,7 @@ function AuthorComponent({author, authorsToQuotes}){
 
     const fetchImage = () =>{
         setIsLoading(true);
-        fetch(`https://enhanced-type-fit.herokuapp.com/${author}`, {mode: 'cors'})
+        fetch(`${APP.BASE_URL}/${author}`, {mode: 'cors'})
         .then(resp => resp.json())
         .then((data) => {
           setIsLoading(false);
