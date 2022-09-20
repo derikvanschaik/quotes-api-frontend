@@ -2,6 +2,7 @@ import React from 'react';
 import App from './App';
 import AuthorSearch from './components/AuthorSearch';
 import KeywordSearch from './components/KeywordSearch';
+import RelatedImages from './components/RelatedImages';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import ReactDOM from "react-dom/client";
@@ -23,6 +24,8 @@ root.render(
       <Route path="/search" element={<AuthorSearch />}>
       </Route>
       <Route path="/keyword-search" element={<KeywordSearch />}>
+      </Route>
+      <Route path="/images/:author" element={<RelatedImages />}>
       </Route>
     </Routes>
   </BrowserRouter>
