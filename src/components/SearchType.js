@@ -1,16 +1,14 @@
 import Dropdown from 'react-bootstrap/Dropdown';
-import { Link, useNavigate } from "react-router-dom";
 
-function SearchType() {
-  const navigate = useNavigate();
+function SearchType({changeSearchType}) {
   return (
     <Dropdown style={{margin: '2em 0'}}>
         <Dropdown.Toggle variant="success" id="dropdown-basic">
         Search Type
         </Dropdown.Toggle>
         <Dropdown.Menu>
-          <Dropdown.Item href="#" onClick={() => navigate('/search')}>Author</Dropdown.Item>
-          <Dropdown.Item href="#" onClick={()=> navigate('/keyword-search')}>Keyword</Dropdown.Item>
+          <Dropdown.Item href="#" onClick={() => changeSearchType('author')}>Author</Dropdown.Item>
+          <Dropdown.Item href="#" onClick={()=> changeSearchType('keyword')}>Keyword</Dropdown.Item>
         </Dropdown.Menu>
     </Dropdown>
   );
