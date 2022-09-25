@@ -11,7 +11,7 @@ import APP from '../enums/enum'
 import KeywordStack from './KeywordStack';
 import QuoteswithKeywords from './QuoteswithKeywords';
 
-function AuthorSearch() {
+function SearchComponent() {
     const [keywords, setKeywords] = useState([]);
     const [resultsCount, setResultsCount] = useState(null);
     const [results, setResults] = useState([]); // changes type based on author or search type
@@ -124,5 +124,5 @@ function AuthorSearch() {
     );
   }
   
-  export default AuthorSearch;
+  export default SearchComponent;
   
