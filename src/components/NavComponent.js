@@ -13,12 +13,12 @@ function NavComponent({includeHome, includeSearch}) {
           >
             {
                 includeHome && 
-                <Nav.Link href="#action1"><Link to="/" className='btn btn-outline-primary'>Home</Link></Nav.Link>
+                <Nav.Link href="#action1"><Link to="/" className='btn btn-outline-primary' data-testid='nav-text-1'>Home</Link></Nav.Link>
 
             }
             {
                 includeSearch && 
-                <Nav.Link href="#action1"><Link to="/search" className='btn btn-outline-primary'>Search</Link></Nav.Link>
+                <Nav.Link href="#action1"><Link to="/search" className='btn btn-outline-primary' data-testid='nav-text-2'>Search</Link></Nav.Link>
             }
         </Nav>
       </Container>
