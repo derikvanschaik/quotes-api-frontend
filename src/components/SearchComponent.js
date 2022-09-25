@@ -30,6 +30,7 @@ function AuthorSearch() {
         setSearchType(type);
     }
     const handleAddKeyword = () =>{
+        if(searchInput === '') return
         setKeywords([...keywords, searchInput]);
         setSearchInput('');
     }
@@ -41,8 +42,10 @@ function AuthorSearch() {
     }
     const handleSearch = () => {
         if(searchType === 'author'){
+            if(searchInput === '') return
             searchAuthors();
         }else{
+            if(keywords.length === 0) return
             searchKeywords();
         }
     }
